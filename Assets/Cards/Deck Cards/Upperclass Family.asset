@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55d253088034934499b3c302e6e83793, type: 3}
+  m_Script: {fileID: 11500000, guid: e21e9a1a08a8bbb49a5428f6aed29673, type: 3}
   m_Name: Upperclass Family
   m_EditorClassIdentifier: 
-  otherCardDescriptionString: Born to upper class
-  otherCardCostString: 1 Money Card
+  deckCardDescriptionString: upper
+  deckCardCostString: 1

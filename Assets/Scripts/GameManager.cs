@@ -4,78 +4,38 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject otherCardPrefab, resourceCardPrefab;
+    public GameObject deckCardPrefab, resourceCardPrefab;
     public Transform deckHand, playerHand;
 
-    public List<OtherCardClass> deckStarterCards;
-    public List<ResourceCardClass> playerStarterCards;
+    public List<DeckCardClass> deckStarterCards;
+    public List<ResourceCardClass> resourceStarterCards;
 
     void Start()
     {
-        StartOtherDeckDeal();
+        StartDeckDeal();
         StartPlayerDeal();
     }
 
-    private void StartOtherDeckDeal()
+    private void StartDeckDeal()
     {
-        for (int i = 4; i > 0; i--)
+        for (int i = 0; i < 4; i++)
         {
-            GameObject clone = Instantiate(otherCardPrefab);
+            GameObject clone = Instantiate(deckCardPrefab);
             clone.transform.SetParent(deckHand, false);
-
-            if (i == 4)
-            {
-                clone.transform.localPosition = new Vector2(-600, 300);
-                clone.GetComponent<OtherCardDisplay>().otherCard = deckStarterCards[0];
-            }
-            else if (i == 3)
-            {
-                clone.transform.localPosition = new Vector2(-200, 300);
-                clone.GetComponent<OtherCardDisplay>().otherCard = deckStarterCards[1];
-            }
-            else if (i == 2)
-            {
-                clone.transform.localPosition = new Vector2(200, 300);
-                clone.GetComponent<OtherCardDisplay>().otherCard = deckStarterCards[2];
-            }
-            else if (i == 1)
-            {
-                clone.transform.localPosition = new Vector2(600, 300);
-                clone.GetComponent<OtherCardDisplay>().otherCard = deckStarterCards[3];
-            }
-
-            clone.name = clone.GetComponent<OtherCardDisplay>().otherCard.name;
+            clone.GetComponent<DeckCardDisplay>().deckCard = deckStarterCards[i];
+            clone.transform.localPosition = new Vector2(-600 + (i * 400), 300);
+            clone.name = clone.GetComponent<DeckCardDisplay>().deckCard.name;
         }
     }
 
     private void StartPlayerDeal()
     {
-        for (int i = 4; i > 0; i--)
+        for (int i = 0; i < 4; i++)
         {
             GameObject clone = Instantiate(resourceCardPrefab);
             clone.transform.SetParent(playerHand, false);
-
-            if (i == 4)
-            {
-                clone.transform.localPosition = new Vector2(-600, -300);
-                clone.GetComponent<ResourceCardDisplay>().resourceCard = playerStarterCards[0];
-            }
-            else if (i == 3)
-            {
-                clone.transform.localPosition = new Vector2(-200, -300);
-                clone.GetComponent<ResourceCardDisplay>().resourceCard = playerStarterCards[1];
-            }
-            else if (i == 2)
-            {
-                clone.transform.localPosition = new Vector2(200, -300);
-                clone.GetComponent<ResourceCardDisplay>().resourceCard = playerStarterCards[2];
-            }
-            else if (i == 1)
-            {
-                clone.transform.localPosition = new Vector2(600, -300);
-                clone.GetComponent<ResourceCardDisplay>().resourceCard = playerStarterCards[3];
-            }
-
+            clone.GetComponent<ResourceCardDisplay>().resourceCard = resourceStarterCards[i];
+            clone.transform.localPosition = new Vector2(-600 + (i * 400), -300);
             clone.name = clone.GetComponent<ResourceCardDisplay>().resourceCard.name;
         }
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 762172750014961109}
   - component: {fileID: 7675523233400130554}
   m_Layer: 5
-  m_Name: OtherCardDescription
+  m_Name: DeckCardDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 2989807121560714900}
   - component: {fileID: 4745289985119149330}
   m_Layer: 5
-  m_Name: OtherCardCost
+  m_Name: DeckCardCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,9 +280,9 @@ GameObject:
   - component: {fileID: 2715801217636684531}
   - component: {fileID: 4090484547346784075}
   - component: {fileID: 2698965825516380169}
-  - component: {fileID: 5601085621804594632}
+  - component: {fileID: 3366720835094867118}
   m_Layer: 5
-  m_Name: OtherCardPrefab
+  m_Name: DeckCardPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -391,9 +391,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5601085621804594632}
-        m_TargetAssemblyTypeName: OtherCardDisplay, Assembly-CSharp
-        m_MethodName: GetOtherCardMethod
+      - m_Target: {fileID: 3366720835094867118}
+        m_TargetAssemblyTypeName: DeckCardDisplay, Assembly-CSharp
+        m_MethodName: GetDeckCardMethod
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -403,7 +403,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5601085621804594632
+--- !u!114 &3366720835094867118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -412,10 +412,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5159896174630879974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8df63bd5eb6b19343bb8c412d9ffc2a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 38bca1f98c2980a488f8fa576cf12583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherCard: {fileID: 11400000, guid: e2ebbfcfc4cecfa40980b71f975c589e, type: 2}
-  otherCardDescriptionText: {fileID: 7675523233400130554}
-  otherCardCostText: {fileID: 4745289985119149330}
-  otherButton: {fileID: 2698965825516380169}
+  deckCard: {fileID: 0}
+  deckCardDescriptionText: {fileID: 7675523233400130554}
+  deckCardCostText: {fileID: 4745289985119149330}
+  deckButton: {fileID: 2698965825516380169}

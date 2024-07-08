@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Other Card", fileName = "New Other Card")]
-public class OtherCardClass : ScriptableObject
+[CreateAssetMenu(menuName = "Deck Card", fileName = "New Deck Card")]
+public class DeckCardClass : ScriptableObject
 {
-    public string otherCardDescriptionString, otherCardCostString;
+    public string deckCardDescriptionString, deckCardCostString;
 
     /*
 
@@ -14,7 +14,7 @@ public class OtherCardClass : ScriptableObject
 
     */
 
-    public void OtherCardMethod()
+    public void DeckCardMethod()
     {
         switch (name)
         {
