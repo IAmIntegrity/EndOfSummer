@@ -12,7 +12,7 @@ public class ResourceCardDisplay : MonoBehaviour
 
     private void Update()
     {
-        if (resourceCard != null)
+        if (resourceCard != null && resourceCardImage.sprite != resourceCard.resourceCardSprite)
         {
             resourceCardImage.sprite = resourceCard.resourceCardSprite;
         }
