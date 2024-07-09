@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21e9a1a08a8bbb49a5428f6aed29673, type: 3}
   m_Name: Poor Family
   m_EditorClassIdentifier: 
-  deckCardDescriptionString: poor
-  deckCardCostString: 0
+  deckCardDescriptionString: Born to a poor family. Gain 1 Knowledge Card
+  deckCardCostString: Free
+  deckCardTakeInt: 0
+  deckCardGiveInt: 1000
