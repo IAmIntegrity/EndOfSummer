@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21e9a1a08a8bbb49a5428f6aed29673, type: 3}
   m_Name: Rich Family
   m_EditorClassIdentifier: 
-  deckCardDescriptionString: Born to a reach family
+  deckCardDescriptionString: Born to a rich family
   deckCardCostString: 2 Money Cards
   deckCardTagString: Starter
   deckCardTakeInt: 2
