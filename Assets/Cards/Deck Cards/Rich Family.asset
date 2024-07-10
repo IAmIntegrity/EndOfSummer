@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckCardDescriptionString: Born to a reach family
   deckCardCostString: 2 Money Cards
+  deckCardTagString: Starter
   deckCardTakeInt: 2
   deckCardGiveInt: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Deck Card", fileName = "New Deck Card")]
 public class DeckCardClass : ScriptableObject
 {
-    public string deckCardDescriptionString, deckCardCostString;
+    public string deckCardDescriptionString, deckCardCostString, deckCardTagString;
     public int deckCardTakeInt, deckCardGiveInt; //Action, Knowledge, Strength, Stamina, Money
 
     public void DeckCardMethod()

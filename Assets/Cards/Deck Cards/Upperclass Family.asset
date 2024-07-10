@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckCardDescriptionString: Born to an upperclass family
   deckCardCostString: 1 Money Card
+  deckCardTagString: Starter
   deckCardTakeInt: 1
   deckCardGiveInt: 0

@@ -5,9 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject deckCardPrefab, resourceCardPrefab;
-    public Transform deckHand, playerHand;
-    public List<DeckCardClass> deckStarterCards;
-    public List<ResourceCardClass> resourceStarterCards;
+    public Transform deckHandTransform, playerHandTransform;
+    public List<DeckCardClass> deckCardsAllList;
+    public List<ResourceCardClass> resourceCardsAllList;
 
     public int moneyCardsInt = 0, staminaCardsInt = 0, strengthCardsInt = 0, knowledgeCardsInt = 0, actionCardsInt = 0;
 
@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             GameObject clone = Instantiate(deckCardPrefab);
-            clone.transform.SetParent(deckHand, false);
-            clone.GetComponent<DeckCardDisplay>().deckCard = deckStarterCards[i];
+            clone.transform.SetParent(deckHandTransform, false);
+            clone.GetComponent<DeckCardDisplay>().deckCard = GetCardsOfTag("Starter")[i];
             clone.transform.localPosition = new Vector2(-600 + (i * 400), 300);
             clone.name = clone.GetComponent<DeckCardDisplay>().deckCard.name;
         }
@@ -31,12 +31,13 @@ public class GameManager : MonoBehaviour
 
     private void StartPlayerDeal()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 5; i++)
         {
+            int rand = Random.Range(0, 5);
             GameObject clone = Instantiate(resourceCardPrefab);
-            clone.transform.SetParent(playerHand, false);
-            clone.GetComponent<ResourceCardDisplay>().resourceCard = resourceStarterCards[i];
-            clone.transform.localPosition = new Vector2(-600 + (i * 400), -300);
+            clone.transform.SetParent(playerHandTransform, false);
+            clone.GetComponent<ResourceCardDisplay>().resourceCard = resourceCardsAllList[rand];
+            clone.transform.localPosition = new Vector2(-600 + (i * 300), -300);
             clone.name = clone.GetComponent<ResourceCardDisplay>().resourceCard.name;
 
             GiveOrTakeResourceCard(clone.name, 1, true);
@@ -91,5 +92,20 @@ public class GameManager : MonoBehaviour
                 actionCardsInt -= num;
             }
         }
+    }
+
+    public DeckCardClass[] GetCardsOfTag(string tag)
+    {
+        List<DeckCardClass> deckCards = new();
+
+        for (int i = 0; i < deckCardsAllList.Count; i++)
+        {
+            if (deckCardsAllList[i].deckCardTagString == tag)
+            {
+                deckCards.Add(deckCardsAllList[i]);
+            }
+        }
+
+        return deckCards.ToArray();
     }
 }

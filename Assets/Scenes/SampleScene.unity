@@ -189,18 +189,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckCardPrefab: {fileID: 5159896174630879974, guid: 042b147a724c09f43a4a145e2c58bf75, type: 3}
   resourceCardPrefab: {fileID: 5159896174630879974, guid: f0777d69687e61a4883d05d92ffa9f2a, type: 3}
-  deckHand: {fileID: 201377611}
-  playerHand: {fileID: 1036315285}
-  deckStarterCards:
+  deckHandTransform: {fileID: 201377611}
+  playerHandTransform: {fileID: 1036315285}
+  deckCardsAllList:
   - {fileID: 11400000, guid: d252522b212057e4fa762746bd8d7299, type: 2}
   - {fileID: 11400000, guid: 2206929302fb29048a1e36c2c834f10d, type: 2}
   - {fileID: 11400000, guid: a13340a1c8fe9604fa4af218779813e5, type: 2}
   - {fileID: 11400000, guid: 3f1d382bdfed6a0448c050f143a27ff4, type: 2}
-  resourceStarterCards:
-  - {fileID: 11400000, guid: 042cdab362f970c45b84797f9f481374, type: 2}
+  resourceCardsAllList:
   - {fileID: 11400000, guid: 042cdab362f970c45b84797f9f481374, type: 2}
   - {fileID: 11400000, guid: cb09d8cc0e1af294096f75eed5c9701d, type: 2}
   - {fileID: 11400000, guid: a0c896f8d545faf4a9952a7c8cebf0b8, type: 2}
+  - {fileID: 11400000, guid: 9bdd947ee444faf4baa54fc3af421470, type: 2}
+  - {fileID: 11400000, guid: ea2c673913d3a6e4d803e9311500485b, type: 2}
+  moneyCardsInt: 0
+  staminaCardsInt: 0
+  strengthCardsInt: 0
+  knowledgeCardsInt: 0
+  actionCardsInt: 0
 --- !u!4 &346848254
 Transform:
   m_ObjectHideFlags: 0

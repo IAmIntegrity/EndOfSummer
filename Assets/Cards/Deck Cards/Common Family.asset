@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckCardDescriptionString: Born to a common family
   deckCardCostString: Free
+  deckCardTagString: Starter
   deckCardTakeInt: 0
   deckCardGiveInt: 0

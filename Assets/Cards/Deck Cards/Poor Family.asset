@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckCardDescriptionString: Born to a poor family. Gain 1 Knowledge Card
   deckCardCostString: Free
+  deckCardTagString: Starter
   deckCardTakeInt: 0
   deckCardGiveInt: 1000
