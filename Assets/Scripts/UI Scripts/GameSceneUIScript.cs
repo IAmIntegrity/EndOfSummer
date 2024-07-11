@@ -5,22 +5,21 @@ using UnityEngine.UI;
 
 public class GameSceneUIScript : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup settingsPanel;
+    [SerializeField] private GameObject settingsPanel;
+
+    bool settingsPanelIsActiveBool = false;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (settingsPanel.alpha == 1.0f)
-            {
-                settingsPanel.alpha = 0.0f;
-                settingsPanel.interactable = false;
-            }
-            else
-            {
-                settingsPanel.alpha = 1.0f;
-                settingsPanel.interactable = true;
-            }
+            SettingsPanelBackButton();
         }
+    }
+
+    public void SettingsPanelBackButton()
+    {
+        settingsPanelIsActiveBool = !settingsPanelIsActiveBool;
+        settingsPanel.SetActive(settingsPanelIsActiveBool);
     }
 }

@@ -5,27 +5,31 @@ using UnityEngine.UI;
 
 public class MusicPlayerScript : MonoBehaviour
 {
-    public AudioSource audioSource, clickAudioSource;
-    public Slider musicVolumeSlider;
+    public AudioSource musicAudioSource, sfxAudioSource;
+    public Slider musicVolumeSlider, sfxVolumeSlider;
 
-    private float musicVolumeFloat = 0.5f;
+    private float musicVolumeFloat = 0.5f, sfxVolumeFloat = 0.5f;
 
     private void Start()
     {
-        audioSource.playOnAwake = true;
-        audioSource.loop = true;
-        audioSource.Play();
+        musicAudioSource.playOnAwake = true;
+        musicAudioSource.loop = true;
+        musicAudioSource.Play();
 
         musicVolumeFloat = PlayerPrefs.GetFloat("musicVolumePref");
-        audioSource.volume = musicVolumeFloat;
+        musicAudioSource.volume = musicVolumeFloat;
         musicVolumeSlider.value = musicVolumeFloat;
+
+        sfxVolumeFloat = PlayerPrefs.GetFloat("sfxVolumePref");
+        sfxAudioSource.volume = sfxVolumeFloat;
+        sfxVolumeSlider.value = sfxVolumeFloat;
     }
 
     private void Update()
     {
-        if (audioSource.volume != musicVolumeFloat)
+        if (musicAudioSource.volume != musicVolumeFloat)
         {
-            audioSource.volume = musicVolumeFloat;
+            musicAudioSource.volume = musicVolumeFloat;
             PlayerPrefs.SetFloat("musicVolumePref", musicVolumeFloat);
         }
 
@@ -36,14 +40,34 @@ public class MusicPlayerScript : MonoBehaviour
             musicVolumeSlider.value = musicVolumeFloat;
         }
 
+        if (sfxAudioSource.volume != sfxVolumeFloat)
+        {
+            sfxAudioSource.volume = sfxVolumeFloat;
+            PlayerPrefs.SetFloat("sfxVolumePref", sfxVolumeFloat);
+        }
+
+        if (sfxVolumeSlider == null)
+        {
+            sfxVolumeSlider = GameObject.Find("SFXVolumeSlider").GetComponent<Slider>();
+            sfxVolumeSlider.onValueChanged.AddListener(UpdateSFXVolume);
+            sfxVolumeSlider.value = sfxVolumeFloat;
+
+            GameObject.Find("SettingsPanel").SetActive(false);
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
-            clickAudioSource.Play();
+            sfxAudioSource.Play();
         }
     }
 
     public void UpdateMusicVolume(float musicVolume)
     {
         musicVolumeFloat = musicVolume;
-    } 
+    }
+
+    public void UpdateSFXVolume(float sfxVolume)
+    {
+        sfxVolumeFloat = sfxVolume;
+    }
 }

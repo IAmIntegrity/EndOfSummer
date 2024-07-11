@@ -31,65 +31,146 @@ public class GameManager : MonoBehaviour
 
     private void StartPlayerDeal()
     {
-        for (int i = 0; i < 5; i++)
-        {
-            int rand = Random.Range(0, 5);
-            GameObject clone = Instantiate(resourceCardPrefab);
-            clone.transform.SetParent(playerHandTransform, false);
-            clone.GetComponent<ResourceCardDisplay>().resourceCard = resourceCardsAllList[rand];
-            clone.transform.localPosition = new Vector2(-600 + (i * 300), -300);
-            clone.name = clone.GetComponent<ResourceCardDisplay>().resourceCard.name;
-
-            GiveOrTakeResourceCard(clone.name, 1, true);
-        }
+        GiveOrTakeResourceCard("Money", 2, true);
+        GiveOrTakeResourceCard("Stamina", 1, true);
+        GiveOrTakeResourceCard("Strength", 1, true);
+        GiveOrTakeResourceCard("Knowledge", 1, true);
     }
 
     public void GiveOrTakeResourceCard(string card, int num, bool isGiving)
     {
         if (isGiving)
         {
-            if (card == "Money")
+            for (int i = 0; i < num; i++)
             {
-                moneyCardsInt += num;
-            }
-            else if (card == "Stamina")
-            {
-                staminaCardsInt += num;
-            }
-            else if (card == "Strength")
-            {
-                strengthCardsInt += num;
-            }
-            else if (card == "Knowledge")
-            {
-                knowledgeCardsInt += num;
-            }
-            else if (card == "Action")
-            {
-                actionCardsInt += num;
+                GameObject clone = Instantiate(resourceCardPrefab);
+                clone.transform.SetParent(playerHandTransform, false);
+
+                if (card == "Money")
+                {
+                    moneyCardsInt++;
+                    clone.GetComponent<ResourceCardDisplay>().resourceCard = resourceCardsAllList[0];
+                }
+                else if (card == "Stamina")
+                {
+                    staminaCardsInt++;
+                    clone.GetComponent<ResourceCardDisplay>().resourceCard = resourceCardsAllList[1];
+                }
+                else if (card == "Strength")
+                {
+                    strengthCardsInt++;
+                    clone.GetComponent<ResourceCardDisplay>().resourceCard = resourceCardsAllList[2];
+                }
+                else if (card == "Knowledge")
+                {
+                    knowledgeCardsInt++;
+                    clone.GetComponent<ResourceCardDisplay>().resourceCard = resourceCardsAllList[3];
+                }
+                else if (card == "Action")
+                {
+                    actionCardsInt++;
+                    clone.GetComponent<ResourceCardDisplay>().resourceCard = resourceCardsAllList[4];
+                }
+
+                clone.name = clone.GetComponent<ResourceCardDisplay>().resourceCard.name;
             }
         }
         else
         {
-            if (card == "Money")
+            for (int i = 0; i < num; i++)
             {
-                moneyCardsInt -= num;
+                if (card == "Money")
+                {
+                    moneyCardsInt--;
+                }
+                else if (card == "Stamina")
+                {
+                    staminaCardsInt--;
+                }
+                else if (card == "Strength")
+                {
+                    strengthCardsInt--;
+                }
+                else if (card == "Knowledge")
+                {
+                    knowledgeCardsInt--;
+                }
+                else if (card == "Action")
+                {
+                    actionCardsInt--;
+                }
             }
-            else if (card == "Stamina")
+        }
+
+        SetPlayerCardTransforms();
+    }
+
+    public void SetPlayerCardTransforms()
+    {
+        int numCards = 0;
+
+        foreach (Transform transform in playerHandTransform)
+        {
+            numCards++;
+        }
+        Debug.Log(numCards);
+
+        if (numCards % 2 != 0)
+        {
+            int xMovement = 0;
+
+            if (numCards == 3)
             {
-                staminaCardsInt -= num;
+                xMovement = -250;
             }
-            else if (card == "Strength")
+            else if (numCards == 5)
             {
-                strengthCardsInt -= num;
+                xMovement = -500;
             }
-            else if (card == "Knowledge")
+            else if (numCards == 7)
             {
-                knowledgeCardsInt -= num;
+                xMovement = -750;
             }
-            else if (card == "Action")
+            else if (numCards == 9)
             {
-                actionCardsInt -= num;
+                xMovement = -1000;
+            }
+            else if (numCards == 11)
+            {
+                xMovement = -1250;
+            }
+
+            foreach (Transform transform in playerHandTransform)
+            {
+                transform.localPosition = new Vector2(xMovement, -360);
+                xMovement += 250;
+            }
+        }
+        else
+        {
+            int xMovement = -125;
+
+            if (numCards == 4)
+            {
+                xMovement = -375;
+            }
+            else if (numCards == 6)
+            {
+                xMovement = -625;
+            }
+            else if (numCards == 8)
+            {
+                xMovement = -875;
+            }
+            else if (numCards == 10)
+            {
+                xMovement = -1125;
+            }
+
+            foreach (Transform transform in playerHandTransform)
+            {
+                transform.localPosition = new Vector2(xMovement, -360);
+                xMovement += 250;
             }
         }
     }
