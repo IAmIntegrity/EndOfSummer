@@ -7,57 +7,26 @@ using UnityEngine;
 public class DeckCardClass : ScriptableObject
 {
     public string deckCardDescriptionString, deckCardCostString, deckCardTagString;
-    public int deckCardTakeInt, deckCardGiveInt; //Action, Knowledge, Strength, Stamina, Money
+    public int[] deckCardTakeIntArray = new int[5], deckCardGiveIntArray = new int[5]; //Action, Knowledge, Strength, Stamina, Money
 
     public void DeckCardMethod()
     {
         GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        string[] resourceNames = { "Money", "Stamina", "Strength", "Knowledge", "Action" };
 
-        if (deckCardTakeInt != 0)
+        for (int i = 0; i < 5; i++)
         {
-            if ((deckCardTakeInt / (int)Mathf.Pow(10, 0)) % 10 != 0)
+            if (deckCardTakeIntArray[i] != 0)
             {
-                gameManager.GiveOrTakeResourceCard("Money", (deckCardTakeInt / (int)Mathf.Pow(10, 0)) % 10, false);
-            }
-            if ((deckCardTakeInt / (int)Mathf.Pow(10, 1)) % 10 != 0)
-            {
-                gameManager.GiveOrTakeResourceCard("Stamina", (deckCardTakeInt / (int)Mathf.Pow(10, 1)) % 10, false);
-            }
-            if ((deckCardTakeInt / (int)Mathf.Pow(10, 2)) % 10 != 0)
-            {
-                gameManager.GiveOrTakeResourceCard("Strength", (deckCardTakeInt / (int)Mathf.Pow(10, 2)) % 10, false);
-            }
-            if ((deckCardTakeInt / (int)Mathf.Pow(10, 3)) % 10 != 0)
-            {
-                gameManager.GiveOrTakeResourceCard("Knowledge", (deckCardTakeInt / (int)Mathf.Pow(10, 3)) % 10, false);
-            }
-            if ((deckCardTakeInt / (int)Mathf.Pow(10, 4)) % 10 != 0)
-            {
-                gameManager.GiveOrTakeResourceCard("Action", (deckCardTakeInt / (int)Mathf.Pow(10, 4)) % 10, false);
+                gameManager.GiveOrTakeResourceCard(resourceNames[i], deckCardTakeIntArray[i], false);
             }
         }
 
-        if (deckCardGiveInt != 0)
+        for (int i = 0; i < 5; i++)
         {
-            if ((deckCardGiveInt / (int)Mathf.Pow(10, 0)) % 10 != 0)
+            if (deckCardGiveIntArray[i] != 0)
             {
-                gameManager.GiveOrTakeResourceCard("Money", (deckCardGiveInt / (int)Mathf.Pow(10, 0)) % 10, true);
-            }
-            if ((deckCardGiveInt / (int)Mathf.Pow(10, 1)) % 10 != 0)
-            {
-                gameManager.GiveOrTakeResourceCard("Stamina", (deckCardGiveInt / (int)Mathf.Pow(10, 1)) % 10, true);
-            }
-            if ((deckCardGiveInt / (int)Mathf.Pow(10, 2)) % 10 != 0)
-            {
-                gameManager.GiveOrTakeResourceCard("Strength", (deckCardGiveInt / (int)Mathf.Pow(10, 2)) % 10, true);
-            }
-            if ((deckCardGiveInt / (int)Mathf.Pow(10, 3)) % 10 != 0)
-            {
-                gameManager.GiveOrTakeResourceCard("Knowledge", (deckCardGiveInt / (int)Mathf.Pow(10, 3)) % 10, true);
-            }
-            if ((deckCardGiveInt / (int)Mathf.Pow(10, 4)) % 10 != 0)
-            {
-                gameManager.GiveOrTakeResourceCard("Action", (deckCardGiveInt / (int)Mathf.Pow(10, 4)) % 10, true);
+                gameManager.GiveOrTakeResourceCard(resourceNames[i], deckCardGiveIntArray[i], true);
             }
         }
     }

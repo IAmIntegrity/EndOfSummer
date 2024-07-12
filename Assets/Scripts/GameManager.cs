@@ -11,10 +11,15 @@ public class GameManager : MonoBehaviour
 
     public int moneyCardsInt = 0, staminaCardsInt = 0, strengthCardsInt = 0, knowledgeCardsInt = 0, actionCardsInt = 0;
 
-    void Start()
+    private void Start()
     {
         StartDeckDeal();
         StartPlayerDeal();
+    }
+
+    private void Update()
+    {
+        SetPlayerCardTransforms();
     }
 
     private void StartDeckDeal()
@@ -39,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void GiveOrTakeResourceCard(string card, int num, bool isGiving)
     {
-        if (isGiving)
+        if (isGiving) //Giving card
         {
             for (int i = 0; i < num; i++)
             {
@@ -73,10 +78,19 @@ public class GameManager : MonoBehaviour
                 }
 
                 clone.name = clone.GetComponent<ResourceCardDisplay>().resourceCard.name;
+                clone.tag = $"{card} Card Tag";
+                Debug.Log($"Plus 1 Card {clone.name}");
             }
         }
-        else
+        else //Taking Card
         {
+            GameObject[] cardsOfTag = GameObject.FindGameObjectsWithTag($"{card} Card Tag");
+
+            if (cardsOfTag.Length < num)
+            {
+                num = cardsOfTag.Length;
+            }
+
             for (int i = 0; i < num; i++)
             {
                 if (card == "Money")
@@ -99,10 +113,11 @@ public class GameManager : MonoBehaviour
                 {
                     actionCardsInt--;
                 }
+
+                Destroy(cardsOfTag[i]);
+                Debug.Log($"Minus Card {card}");
             }
         }
-
-        SetPlayerCardTransforms();
     }
 
     public void SetPlayerCardTransforms()
@@ -113,11 +128,10 @@ public class GameManager : MonoBehaviour
         {
             numCards++;
         }
-        Debug.Log(numCards);
 
         if (numCards % 2 != 0)
         {
-            int xMovement = 0;
+            int xMovement = 0; //1 Card
 
             if (numCards == 3)
             {
@@ -148,7 +162,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            int xMovement = -125;
+            int xMovement = -125; //2 Cards
 
             if (numCards == 4)
             {

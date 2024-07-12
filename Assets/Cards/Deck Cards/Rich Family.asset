@@ -15,5 +15,5 @@ MonoBehaviour:
   deckCardDescriptionString: Born to a rich family
   deckCardCostString: 2 Money Cards
   deckCardTagString: Starter
-  deckCardTakeInt: 2
-  deckCardGiveInt: 0
+  deckCardTakeIntArray: 0200000000000000000000000000000000000000
+  deckCardGiveIntArray: 0000000000000000000000000000000000000000

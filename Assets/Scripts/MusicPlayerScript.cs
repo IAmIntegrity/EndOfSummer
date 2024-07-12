@@ -52,6 +52,7 @@ public class MusicPlayerScript : MonoBehaviour
             sfxVolumeSlider.onValueChanged.AddListener(UpdateSFXVolume);
             sfxVolumeSlider.value = sfxVolumeFloat;
 
+            GameObject.Find("SettingsPanel").GetComponent<CanvasGroup>().alpha = 1.0f;
             GameObject.Find("SettingsPanel").SetActive(false);
         }
 
