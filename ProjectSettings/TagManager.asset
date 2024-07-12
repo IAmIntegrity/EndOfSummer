@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - MusicPlayerTag
+  - Money Card Tag
+  - Stamina Card Tag
+  - Strength Card Tag
+  - Knowledge Card Tag
+  - Action Card Tag
   layers:
   - Default
   - TransparentFX
