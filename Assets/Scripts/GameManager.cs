@@ -131,28 +131,7 @@ public class GameManager : MonoBehaviour
 
         if (numCards % 2 != 0)
         {
-            int xMovement = 0; //1 Card
-
-            if (numCards == 3)
-            {
-                xMovement = -250;
-            }
-            else if (numCards == 5)
-            {
-                xMovement = -500;
-            }
-            else if (numCards == 7)
-            {
-                xMovement = -750;
-            }
-            else if (numCards == 9)
-            {
-                xMovement = -1000;
-            }
-            else if (numCards == 11)
-            {
-                xMovement = -1250;
-            }
+            int xMovement = (1 - numCards) * 125; //1 Card
 
             foreach (Transform transform in playerHandTransform)
             {
@@ -162,24 +141,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            int xMovement = -125; //2 Cards
-
-            if (numCards == 4)
-            {
-                xMovement = -375;
-            }
-            else if (numCards == 6)
-            {
-                xMovement = -625;
-            }
-            else if (numCards == 8)
-            {
-                xMovement = -875;
-            }
-            else if (numCards == 10)
-            {
-                xMovement = -1125;
-            }
+            int xMovement = -(numCards - 2) * 125 - 125; //2 Cards
 
             foreach (Transform transform in playerHandTransform)
             {
